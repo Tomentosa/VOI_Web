@@ -1,93 +1,54 @@
-root {
-    display: block;
-}
-
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    color: #3a4f54;
-    background-color: #ffdfa2;
-    font-size: small;
+* {
+    margin: 0;
+    padding: 0;
 }
 
 a {
     color: #e33b06;
 }
 
-/*This is the top navigation bar that should be present on all pages*/
-.topBanner{
-    position: relative;
-    background-color: white;
-    overflow: hidden;
-}
-.topBanner p{
-    float:left;
-    color: black;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-}
-.topNav{
-    position: relative;
-    background-color: #cc9900;
-    overflow: hidden;
-}
-.topNav a{
-    float:left;
-    color: black;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-}
-button.clear{
+.clear{
     vertical-align: central;
     color: black;
     background-color: red;
+
     border-color: black;
     border-radius: 2px;
+    border-width: 1px;
+
     text-align: center;
-}
-table {
-    empty-cells: show;
-}
-textArea.search{
-    height: 12px;
+    padding: 2px;
 }
 
-form.jsfcrud_list_form th, td th {
-
-    vertical-align: middle;
-    font-size: x-small;
-    color: #392613;
-
-    border-top-style: solid;
-    border-bottom-style: solid;
-    border-left-style: solid;
-    border-right-style: solid;
-    border-top-width: 1px;
-    border-bottom-width: 1px;
-    border-left-width: 1px;
-    border-right-width: 1px;
-
-    border-top-color: #b2d5d6;
-    border-bottom-color: #b2d5d6;
-    border-left-color: #90b4bd;
-    border-right-color: #90b4bd;
-
-    letter-spacing: 3px;
-    text-align: left;
-    padding-top: 6px;
-    padding-bottom: 6px;
-    padding-left: 6px;
-    padding-right: 6px;
-    background-color: #d9d9d9;
+root {
+    display: block;
 }
 
-td {
-    vertical-align: top;
-    padding-bottom: 8px;
+.Banner{
+    float: left;
+    vertical-align: central;
+    padding: 10px ;
+    font-size: 17px;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #3a4f54;
+    background-color: #f8d287;
     font-size: small;
+}
+
+#busyImage {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}
+
+.dropDown{
+    margin-top: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    height: 17px;
 }
 
 form.jsfcrud_list_form td, td td {
@@ -99,12 +60,100 @@ form.jsfcrud_list_form td, td td {
     border-bottom-width: 1px;
     border-left-width: 1px;
     border-right-width: 1px;
-    border-top-color: #b2d5d6;
-    border-bottom-color: #b2d5d6;
-    border-left-color: #b2d5d6;
-    border-right-color: #b2d5d6;
+    border-top-color: #828279;
+    border-bottom-color: #828279;
+    border-left-color: #828279;
+    border-right-color: #828279;
     vertical-align: baseline;
     padding-bottom: 0px;
+}
+
+form.jsfcrud_list_form th, td th {
+
+    vertical-align: middle;
+    font-size: small;
+    color: #392613;
+
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-right-style: solid;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+
+    border-top-color: #333300;
+    border-bottom-color: #333300;
+    border-left-color: #333300;
+    border-right-color: #333300;
+
+    text-align: left;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left: 6px;
+    padding-right: 6px;
+    background-color: #d9d9d9;
+}
+
+.search{
+    margin-top: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    height: 15px;
+}
+
+.space {
+    margin-top: 65px;
+}
+
+.topBanner{
+    position: relative;
+    background-color: white;
+    overflow: hidden;
+}
+
+.topBanner p{
+    float:left;
+    color: black;
+    text-align: center;
+    padding: 39px 5px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.topNav{
+    position: relative;
+    background-color: #cc9900;
+    overflow: hidden;
+    border-width: 2px;
+    border-color: black;
+}
+
+.topNav a{
+    float:left;
+    color: black;
+    text-align: center;
+    padding: 15px 25px;
+    text-decoration: none;
+    font-size: 17px;
+}
+.topNav a:hover{
+    background-color: darkgoldenrod;
+    text-decoration: black;
+}
+.topNav a:active{
+    font-weight: bold;
+}
+
+table {
+    empty-cells: show;
+}
+
+td {
+    vertical-align: top;
+    padding-bottom: 8px;
+    font-size: small;
 }
 
 tr.jsfcrud_odd_row {
@@ -112,14 +161,7 @@ tr.jsfcrud_odd_row {
     color: #4e6a71;
 }
 
-
 tr.jsfcrud_even_row {
     background-color: #eff5fa;
     color: #4e6a71;
-}
-
-#busyImage {
-    position: absolute;
-    left: 50%;
-    top: 50%;
 }

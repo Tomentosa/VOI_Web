@@ -11,6 +11,7 @@
         </ui:define>
         <ui:define name="body">
             <div class = "topBanner">
+                <img class="Banner" src="images/banner.png" alt="maryland.gov"/>
                 <p><em>Vehicles Of Interest</em></p>
             </div>
             <div class ="topNav" >
@@ -18,7 +19,7 @@
                 <a href="#Alert Types">Alert Types</a>
                 <a href="#Vehicle Types">Vehicle Types</a>
             </div>
-
+            <div class="space"></div>
             <center>
                 <h:form styleClass="jsfcrud_list_form">
                     <h:panelGroup id="messagePanel" layout="block">
@@ -29,98 +30,114 @@
                         <h:commandLink action="#{vehicleOfInterestController.previous}" value="#{bundle.Previous} #{vehicleOfInterestController.pagination.pageSize}" rendered="#{vehicleOfInterestController.pagination.hasPreviousPage}"/>&nbsp;
                         <h:commandLink action="#{vehicleOfInterestController.next}" value="#{bundle.Next} #{vehicleOfInterestController.pagination.pageSize}" rendered="#{vehicleOfInterestController.pagination.hasNextPage}"/>&nbsp;
                         <p id="description"><em>Maryland VOI Database</em></p>
-                        <h:dataTable value="#{vehicleOfInterestController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
-                            <h:column>
-                                <f:facet name="header">
-                                    <button class="clear">clear</button>
-                                    <h:outputText value="&nbsp;"/>
-                                </f:facet>
-                                <h:commandLink action="#{vehicleOfInterestController.prepareView}" value="#{bundle.ListVehicleOfInterestViewLink}"/>
-                                <h:outputText value=" "/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <textarea class="search">--License Plate--</textarea>
-                                    <br />
-                                    <br />
-                                    <h:outputText value="#{bundle.ListVehicleOfInterestTitle_licensePlate}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.licensePlate}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <select class="dropDown">
-                                        <option>--Alert Type--</option>
-                                    </select>
-                                    <br />
-                                    <br />
-                                    <h:outputText value="#{bundle.ListVehicleOfInterestTitle_reason}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.reason}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <select class="dropDown">
-                                        <option>--Make--</option>
-                                    </select>
-                                    <br />
-                                    <br />
-                                    <h:outputText value="#{bundle.ListVehicleOfInterestTitle_make}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.make}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <select class="dropDown">
-                                        <option>--Model--</option>
-                                    </select>
-                                    <br />
-                                    <br />
-                                    <h:outputText value="#{bundle.ListVehicleOfInterestTitle_model}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.model}"/>
-                            </h:column>   
-                            <h:column>
-                                <f:facet name="header">
-                                    <select class="dropDown">
-                                        <option>--Year--</option>
-                                    </select>
-                                    <br />
-                                    <br />
-                                    <h:outputText value="#{bundle.ListVehicleOfInterestTitle_vehYear}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.vehYear}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <select class="dropDown">
-                                        <option>--Color--</option>
-                                    </select>
-                                    <br />
-                                    <br />
-                                    <h:outputText value="#{bundle.ListVehicleOfInterestTitle_color}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.color}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <textarea class="search">--Owners Name--</textarea>
-                                    <br />
-                                    <br />
-                                    <h:outputText value="#{bundle.ListVehicleOfInterestTitle_ownersName}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.ownersName}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <textarea class="search"> --Owners Phone--</textarea>
-                                    <br />
-                                    <br />
-                                    <h:outputText value="#{bundle.ListVehicleOfInterestTitle_ownersPhone}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.ownersPhone}"/>
-                            </h:column>                     
-                        </h:dataTable>
+                        <div id="tablePad">
+                            <h:dataTable value="#{vehicleOfInterestController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                                <h:column>
+                                    <f:facet name="header">
+                                        <button class="clear">clear</button>
+                                        <h:outputText value="&nbsp;"/>
+                                    </f:facet>
+                                    <center>[
+                                        <h:commandLink action="#{vehicleOfInterestController.prepareView}" value="#{bundle.ListVehicleOfInterestViewLink}"/>
+                                        ]</center>
+                                    <h:outputText value=" "/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <textarea class="search">--License Plate--</textarea>
+                                        <br />
+                                        <br />
+                                        <h:outputText value="License Plate"/>
+                                    </f:facet>
+                                    <center>
+                                        <h:outputText value="#{item.licensePlate}"/>
+                                    </center>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <select class="dropDown">
+                                            <option>--Alert Type--</option>
+                                        </select>
+                                        <br />
+                                        <br />
+                                        <h:outputText value="Alert Type"/>
+                                    </f:facet>
+                                    <center>
+                                        <h:outputText value="#{item.reason}"/>
+                                    </center>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <select class="dropDown">
+                                            <option>--Make--</option>
+                                        </select>
+                                        <br />
+                                        <br />
+                                        <h:outputText value="#{bundle.ListVehicleOfInterestTitle_make}"/>
+                                    </f:facet>
+                                    <center>
+                                        <h:outputText value="#{item.make}"/>
+                                    </center>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <select class="dropDown">
+                                            <option>--Model--</option>
+                                        </select>
+                                        <br />
+                                        <br />
+                                        <h:outputText value="#{bundle.ListVehicleOfInterestTitle_model}"/>
+                                    </f:facet>
+                                    <center>
+                                        <h:outputText value="#{item.model}"/>
+                                    </center>
+                                </h:column>   
+                                <h:column>
+                                    <f:facet name="header">
+                                        <select class="dropDown">
+                                            <option>--Year--</option>
+                                        </select>
+                                        <br />
+                                        <br />
+                                        <h:outputText value="Year"/>
+                                    </f:facet>
+                                    <center>
+                                        <h:outputText value="#{item.vehYear}"/>
+                                    </center>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <select class="dropDown">
+                                            <option>--Color--</option>
+                                        </select>
+                                        <br />
+                                        <br />
+                                        <h:outputText value="#{bundle.ListVehicleOfInterestTitle_color}"/>
+                                    </f:facet>
+                                    <center>
+                                        <h:outputText value="#{item.color}"/>
+                                    </center>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <textarea class="search">--Owners Name--</textarea>
+                                        <br />
+                                        <br />
+                                        <h:outputText value="Owners Name"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.ownersName}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <textarea class="search"> --Owners Phone--</textarea>
+                                        <br />
+                                        <br />
+                                        <h:outputText value="Owners Phone"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.ownersPhone}"/>
+                                </h:column>                     
+                            </h:dataTable>
+                        </div>
                     </h:panelGroup>
                     <br />
                 </h:form>

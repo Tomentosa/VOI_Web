@@ -7,7 +7,7 @@ import model.ReasonForInterest;
 import model.VehicleMake;
 import model.VehicleModel;
 
-@Generated(value="EclipseLink-2.7.9.v20210604-rNA", date="2022-03-04T08:41:55")
+@Generated(value="EclipseLink-2.7.7.v20200504-rNA", date="2022-03-04T13:41:56")
 @StaticMetamodel(VehicleOfInterest.class)
 public class VehicleOfInterest_ { 
 
