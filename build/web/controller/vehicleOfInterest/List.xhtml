@@ -16,8 +16,8 @@
             </div>
             <div class ="topNav" >
                 <a class = "active" href="#home">Home</a>
-                <a href="#Alert Types">Alert Types</a>
-                <a href="#Vehicle Types">Vehicle Types</a>
+                <a href="faces/controller/reasonForInterest/List.xhtml">Alert Types</a>
+                <a href="faces/controller/vehicleModel/List.xhtml">Vehicle Types</a>
             </div>
             <div class="space"></div>
             <center>
@@ -29,9 +29,11 @@
                     <h:panelGroup rendered="#{vehicleOfInterestController.items.rowCount > 0}">
                         <h:commandLink action="#{vehicleOfInterestController.previous}" value="#{bundle.Previous} #{vehicleOfInterestController.pagination.pageSize}" rendered="#{vehicleOfInterestController.pagination.hasPreviousPage}"/>&nbsp;
                         <h:commandLink action="#{vehicleOfInterestController.next}" value="#{bundle.Next} #{vehicleOfInterestController.pagination.pageSize}" rendered="#{vehicleOfInterestController.pagination.hasNextPage}"/>&nbsp;
-                        <p id="description"><em>Maryland VOI Database</em></p>
+
+                        <p class="description"><em>Maryland VOI Database</em></p>
+
                         <div id="tablePad">
-                            <h:dataTable value="#{vehicleOfInterestController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                            <h:dataTable class="VOI" value="#{vehicleOfInterestController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
                                 <h:column>
                                     <f:facet name="header">
                                         <button class="clear">clear</button>

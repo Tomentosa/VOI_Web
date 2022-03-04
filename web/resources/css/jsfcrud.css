@@ -96,6 +96,11 @@ form.jsfcrud_list_form th, td th {
     background-color: #d9d9d9;
 }
 
+p.description{
+    margin-left: 250px;
+    float: left;
+}
+
 .search{
     margin-top: 5px;
     font-family: Arial, Helvetica, sans-serif;
@@ -144,10 +149,6 @@ form.jsfcrud_list_form th, td th {
 }
 .topNav a:active{
     font-weight: bold;
-}
-
-table {
-    empty-cells: show;
 }
 
 td {
