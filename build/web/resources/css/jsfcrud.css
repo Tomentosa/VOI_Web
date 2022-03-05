@@ -151,6 +151,10 @@ p.description{
     font-weight: bold;
 }
 
+.topNav a.active{
+    text-decoration: underline;
+}
+
 td {
     vertical-align: top;
     padding-bottom: 8px;
