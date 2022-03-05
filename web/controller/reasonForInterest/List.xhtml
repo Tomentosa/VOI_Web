@@ -9,11 +9,11 @@
         <ui:define name="title"></ui:define>
         <ui:define name="body">
             <div class = "topBanner">
-                <img class="Banner" src="../../images/banner.png" alt="maryland.gov"/>
-                <p><em>Alert Types</em></p>
+                <img class="Flag" src="../../images/banner.png" alt="maryland.gov"/>
+                <p><em>Vehicles Of Interest</em></p>
             </div>
             <div class ="topNav" >
-                <a href="/VOI_Web">Home</a>
+                <a href="/VOI_Web/faces/controller/vehicleOfInterest/List.xhtml">Home</a>
                 <a class = "active" href="#AlertTypes">Alert Types</a>
                 <a href="/VOI_Web/faces/controller/vehicleModel/List.xhtml">Vehicle Types</a>
             </div>
@@ -25,9 +25,9 @@
                     </h:panelGroup>
                     <h:outputText escape="false" value="#{bundle.ListReasonForInterestEmpty}" rendered="#{reasonForInterestController.items.rowCount == 0}"/>
                     <h:panelGroup rendered="#{reasonForInterestController.items.rowCount > 0}">
-                        <h:outputText value="#{reasonForInterestController.pagination.pageFirstItem + 1}..#{reasonForInterestController.pagination.pageLastItem + 1}/#{reasonForInterestController.pagination.itemsCount}"/>&nbsp;
                         <h:commandLink action="#{reasonForInterestController.previous}" value="#{bundle.Previous} #{reasonForInterestController.pagination.pageSize}" rendered="#{reasonForInterestController.pagination.hasPreviousPage}"/>&nbsp;
                         <h:commandLink action="#{reasonForInterestController.next}" value="#{bundle.Next} #{reasonForInterestController.pagination.pageSize}" rendered="#{reasonForInterestController.pagination.hasNextPage}"/>&nbsp;
+                        <p id="centered" class="description"><em>Alert Type List</em></p>
                         <h:dataTable value="#{reasonForInterestController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
                             <h:column>
                                 <f:facet name="header">
@@ -41,18 +41,14 @@
                                 </f:facet>
                                 <h:outputText value="#{item.description}"/>
                             </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="&nbsp;"/>
-                                </f:facet>
-                                [<h:commandLink action="#{reasonForInterestController.prepareView}" value="#{bundle.ListReasonForInterestViewLink}"/>]
-                            </h:column>
                         </h:dataTable>
                     </h:panelGroup>
                     <br />
                 </h:form>
             </center>
+            <div class="bottomBanner">
+                SWEN 661 - User Interface Implementation (2022)
+            </div>
         </ui:define>
     </ui:composition>
-
 </html>
