@@ -4,7 +4,7 @@ import model.util.JsfUtil;
 import model.util.PaginationHelper;
 import view.VehicleOfInterestFacade;
 
-import java.io.Serializable;
+import java.io.*;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -16,6 +16,7 @@ import javax.faces.convert.FacesConverter;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
+import org.w3c.dom.Document;
 
 @Named("vehicleOfInterestController")
 @SessionScoped

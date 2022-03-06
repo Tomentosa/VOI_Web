@@ -9,12 +9,12 @@
         <ui:define name="title"></ui:define>
         <ui:define name="body">
             <div class = "topBanner">
-                <img class="Flag" src="../../images/banner.png" alt="maryland.gov"/>
+                <img class="Flag" src="../../resources/images/banner.png" alt="maryland.gov"/>
                 <p><em>Vehicles Of Interest</em></p>
             </div>
             <div class ="topNav" >
                 <a href="/VOI_Web/faces/controller/vehicleOfInterest/List.xhtml">Home</a>
-                <a href="/VOI_Web/faces/controller/reasonForInterest/List.xhtml">Alert Types</a>
+                <a href="/VOI_Web/faces/controller/reasonForInterest/AlertTypes.xhtml">Alert Types</a>
                 <a class = "active" href="#VehicleTypes">Vehicle Types</a>
             </div>
             <div class="space"></div>
@@ -27,7 +27,7 @@
                     <h:panelGroup rendered="#{vehicleModelController.items.rowCount > 0}">
                         <h:commandLink action="#{vehicleModelController.previous}" value="#{bundle.Previous} #{vehicleModelController.pagination.pageSize}" rendered="#{vehicleModelController.pagination.hasPreviousPage}"/>&nbsp;
                         <h:commandLink action="#{vehicleModelController.next}" value="#{bundle.Next} #{vehicleModelController.pagination.pageSize}" rendered="#{vehicleModelController.pagination.hasNextPage}"/>&nbsp;
-                        <p class="description"><em>Vehicle List</em></p>
+                        <p><em>Vehicle List</em></p>
                         <h:dataTable value="#{vehicleModelController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
                             <h:column>
                                 <f:facet name="header">

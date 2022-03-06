@@ -53,6 +53,11 @@ body {
     height: 17px;
 }
 
+#header{
+    vertical-align: text-top;
+    float: left;
+}
+
 .Flag{
     float: left;
     vertical-align: central;
@@ -105,12 +110,16 @@ form.jsfcrud_list_form th, td th {
     background-color: #d9d9d9;
 }
 
-p.description{
-    margin-left: 250px;
-    float: left;
+.quickCenter{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 }
-
-p.description centered{
+.viewContainer{
+    background-color: white;
+    padding: 15px 15px;
+    border-radius: 5px;
 
 }
 
