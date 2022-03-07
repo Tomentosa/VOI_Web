@@ -5,12 +5,21 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <!-- Dark brown color is C24400 -->
     <ui:composition template="/template.xhtml">
-        <ui:define name="title"></ui:define>
+
+        <ui:define name="title">
+
+            <script>
+                var table;
+                table = document.getElementById('voiTable');
+                var x = table.rows.length;
+                console.log("Rows of the table: " + x);
+            </script>
+        </ui:define>
         <ui:define name="body">
             <div class = "topBanner">
                 <img class="Flag" src="../../resources/images/banner.png" alt="maryland.gov"/>
+
                 <p><em>Vehicles Of Interest</em></p>
             </div>
             <div class ="topNav" >
@@ -24,121 +33,98 @@
                     <h:panelGroup id="messagePanel" layout="block">
                         <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
                     </h:panelGroup>
-                    <h:outputText escape="false" value="#{bundle.ListVehicleOfInterestEmpty}" rendered="#{vehicleOfInterestController.items.rowCount == 0}"/>
                     <h:panelGroup rendered="#{vehicleOfInterestController.items.rowCount > 0}">
-                        <h:commandLink action="#{vehicleOfInterestController.previous}" value="#{bundle.Previous} #{vehicleOfInterestController.pagination.pageSize}" rendered="#{vehicleOfInterestController.pagination.hasPreviousPage}"/>&nbsp;
-                        <h:commandLink action="#{vehicleOfInterestController.next}" value="#{bundle.Next} #{vehicleOfInterestController.pagination.pageSize}" rendered="#{vehicleOfInterestController.pagination.hasNextPage}"/>&nbsp;
 
                         <p class="description"><em>Maryland VOI Database</em></p>
 
-                        <div id="tablePad">
-                            <h:dataTable class="VOI" value="#{vehicleOfInterestController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
-                                <h:column>
-                                    <f:facet name="header">
-                                        <button>clear</button>
-                                        <h:outputText value="&nbsp;"/>
-                                    </f:facet>
-                                    <center>[
-                                        <h:commandLink action = "#{vehicleOfInterestController.prepareView}" value="View"/>
-                                        ]</center>
-                                    <h:outputText value=" "/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <textarea class="search">--License Plate--</textarea>
-                                        <br />
-                                        <br />
-                                        <h:outputText value="License Plate"/>
-                                    </f:facet>
-                                    <center>
-                                        <h:outputText value="#{item.licensePlate}"/>
-                                    </center>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <select class="dropDown">
-                                            <option>--Alert Type--</option>
-                                        </select>
-                                        <br />
-                                        <br />
-                                        <h:outputText value="Alert Type"/>
-                                    </f:facet>
-                                    <center>
-                                        <h:outputText value="#{item.reason}"/>
-                                    </center>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <select class="dropDown">
-                                            <option>--Make--</option>
-                                        </select>
-                                        <br />
-                                        <br />
-                                        <h:outputText value="#{bundle.ListVehicleOfInterestTitle_make}"/>
-                                    </f:facet>
-                                    <center>
-                                        <h:outputText value="#{item.make}"/>
-                                    </center>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <select class="dropDown">
-                                            <option>--Model--</option>
-                                        </select>
-                                        <br />
-                                        <br />
-                                        <h:outputText value="#{bundle.ListVehicleOfInterestTitle_model}"/>
-                                    </f:facet>
-                                    <center>
-                                        <h:outputText value="#{item.model}"/>
-                                    </center>
-                                </h:column>   
-                                <h:column>
-                                    <f:facet name="header">
-                                        <select class="dropDown">
-                                            <option>--Year--</option>
-                                        </select>
-                                        <br />
-                                        <br />
-                                        <h:outputText value="Year"/>
-                                    </f:facet>
-                                    <center>
-                                        <h:outputText value="#{item.vehYear}"/>
-                                    </center>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <select class="dropDown">
-                                            <option>--Color--</option>
-                                        </select>
-                                        <br />
-                                        <br />
-                                        <h:outputText value="#{bundle.ListVehicleOfInterestTitle_color}"/>
-                                    </f:facet>
-                                    <center>
-                                        <h:outputText value="#{item.color}"/>
-                                    </center>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <textarea class="search">--Owners Name--</textarea>
-                                        <br />
-                                        <br />
-                                        <h:outputText value="Owners Name"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.ownersName}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <textarea class="search"> --Owners Phone--</textarea>
-                                        <br />
-                                        <br />
-                                        <h:outputText value="Owners Phone"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.ownersPhone}"/>
-                                </h:column>                     
-                            </h:dataTable>
-                        </div>
+                        <h:dataTable  id="voiTable" class="VOI" value="#{vehicleOfInterestController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText class="quickCenter" value="&nbsp;"/>
+                                </f:facet>
+                                <center>[
+                                    <h:commandLink action = "#{vehicleOfInterestController.prepareView}" value="View"/>
+                                    ]</center>
+                                <h:outputText value=" "/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText class="quickCenter" value="License Plate"/>
+                                </f:facet>
+                                <center>
+                                    <h:outputText value="#{item.licensePlate}"/>
+
+                                </center>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText class="quickCenter" value="Alert Type"/>
+                                </f:facet>
+                                <center>
+                                    <h:outputText value="#{item.reason}"/>
+                                </center>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText class="quickCenter" value="#{bundle.ListVehicleOfInterestTitle_make}"/>
+                                </f:facet>
+                                <center>
+                                    <h:outputText value="#{item.make}"/>
+                                </center>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText class="quickCenter" value="#{bundle.ListVehicleOfInterestTitle_model}"/>
+                                </f:facet>
+                                <center>
+                                    <h:outputText value="#{item.model}"/>
+                                </center>
+                            </h:column>   
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText class="quickCenter" value="Year"/>
+                                </f:facet>
+                                <center>
+                                    <h:outputText value="#{item.vehYear}"/>
+                                </center>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText class="quickCenter" value="#{bundle.ListVehicleOfInterestTitle_color}"/>
+                                </f:facet>
+                                <center>
+                                    <h:outputText value="#{item.color}"/>
+                                </center>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText  value="Owners Name"/>
+                                </f:facet>
+                                <h:outputText value="#{item.ownersName}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText class="quickCenter" value="Owners Phone"/>
+                                </f:facet>
+                                <h:outputText class="quickCenter" value="#{item.ownersPhone}"/>
+                            </h:column>
+                            <f:facet name="header" class="srch">
+                                <tr>
+                                    <th><button>clear</button></th>
+                                    <th><input id="myInput" type="text" placeholder="Search License Plate" /></th>
+                                    <th><input type="text" placeholder="Search Alert Type" /></th>
+                                    <th><input type="text" placeholder="Search Make" /></th>
+                                    <th><input type="text" placeholder="Search Model" /></th>
+                                    <th><input type="text" placeholder="Search Year" /></th>
+                                    <th><input type="text" placeholder="Search Color" /></th>
+                                    <th><input type="text" placeholder="Search Owners Name" /></th>
+                                    <th><input type="text" placeholder="Search Owners Phone" /></th>
+                                </tr>
+                            </f:facet>
+                        </h:dataTable>
+                        <h:outputText escape="false" value="#{bundle.ListVehicleOfInterestEmpty}" rendered="#{vehicleOfInterestController.items.rowCount == 0}"/>
+                        <h:commandLink action="#{vehicleOfInterestController.previous}" value="#{bundle.Previous} #{vehicleOfInterestController.pagination.pageSize}" rendered="#{vehicleOfInterestController.pagination.hasPreviousPage}"/>&nbsp;
+                        <h:commandLink action="#{vehicleOfInterestController.next}" value="#{bundle.Next} #{vehicleOfInterestController.pagination.pageSize}" rendered="#{vehicleOfInterestController.pagination.hasNextPage}"/>&nbsp;
                     </h:panelGroup>
                     <br />
                 </h:form>
