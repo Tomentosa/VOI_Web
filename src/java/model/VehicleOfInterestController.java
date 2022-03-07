@@ -46,7 +46,7 @@ public class VehicleOfInterestController implements Serializable {
 
     public PaginationHelper getPagination() {
         if (pagination == null) {
-            pagination = new PaginationHelper(10) {
+            pagination = new PaginationHelper(20) {
 
                 @Override
                 public int getItemsCount() {

@@ -3,17 +3,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
     <ui:composition template="/template.xhtml">
 
         <ui:define name="title">
 
             <script>
-                var table;
-                table = document.getElementById('voiTable');
-                var x = table.rows.length;
-                console.log("Rows of the table: " + x);
+
             </script>
         </ui:define>
         <ui:define name="body">
@@ -30,102 +28,71 @@
             <div class="space"></div>
             <center>
                 <h:form styleClass="jsfcrud_list_form">
-                    <h:panelGroup id="messagePanel" layout="block">
-                        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-                    </h:panelGroup>
-                    <h:panelGroup rendered="#{vehicleOfInterestController.items.rowCount > 0}">
+                    <p class="description"><em>Maryland VOI Database</em></p>
+                    <p:dataTable  id="voiTable" 
+                                  class="VOI" 
+                                  value="#{vehicleOfInterestController.items}" 
+                                  var="item" 
+                                  style="border:solid 1px"
+                                  paginator="true" rows="10"
+                                  paginatorTemplate="
+                                  {PreviousPageLink} {PageLinks} {NextPageLink}
+                                  {RowsPerPageDropdown}"
+                                  rowsPerPageTemplate="5,10,15">
+                        <f:facet name="header">
+                            <div class="p-d-flex p-ai-center p-jc-between">
+                                <div>
+                                    <p:inputText id="globalFilter" onkeyup="PF('customersTable').filter()" style="width:10rem" placeholder="Enter keyword" />
+                                    <p:commandButton value="Global Filter Only" update="@form" action="#{dtFilterView.toggleGlobalFilter()}"/>
+                                </div>
+                            </div>
 
-                        <p class="description"><em>Maryland VOI Database</em></p>
+                        </f:facet>
+                        <p:column headerText = "&nbsp;">
+                            [<h:commandLink action = "#{vehicleOfInterestController.prepareView}" value="View"/>]
+                        </p:column>
+                        <p:column headerText = "License Plate">
+                            <h:outputText value="#{item.licensePlate}"/>
+                        </p:column>
+                        <p:column headerText = "Alert Type">
+                            <h:outputText value="#{item.reason}"/>
+                        </p:column>
+                        <p:column headerText = "Make">
+                            <h:outputText value="#{item.make}"/>
+                        </p:column>
+                        <p:column headerText = "Model">
+                            <h:outputText value="#{item.model}"/>
+                        </p:column>   
+                        <p:column headerText = "Year">
+                            <h:outputText value="#{item.vehYear}"/>
+                        </p:column>
+                        <p:column headerText = "Color">
+                            <h:outputText value="#{item.color}"/>
+                        </p:column>
+                        <p:column headerText = "Owners Name">
+                            <h:outputText value="#{item.ownersName}"/>
+                        </p:column>
+                        <p:column headerText = "Owners Phone #">
+                            <h:outputText class="quickCenter" value="#{item.ownersPhone}"/>
+                        </p:column>
 
-                        <h:dataTable  id="voiTable" class="VOI" value="#{vehicleOfInterestController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText class="quickCenter" value="&nbsp;"/>
-                                </f:facet>
-                                <center>[
-                                    <h:commandLink action = "#{vehicleOfInterestController.prepareView}" value="View"/>
-                                    ]</center>
-                                <h:outputText value=" "/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText class="quickCenter" value="License Plate"/>
-                                </f:facet>
-                                <center>
-                                    <h:outputText value="#{item.licensePlate}"/>
-
-                                </center>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText class="quickCenter" value="Alert Type"/>
-                                </f:facet>
-                                <center>
-                                    <h:outputText value="#{item.reason}"/>
-                                </center>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText class="quickCenter" value="#{bundle.ListVehicleOfInterestTitle_make}"/>
-                                </f:facet>
-                                <center>
-                                    <h:outputText value="#{item.make}"/>
-                                </center>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText class="quickCenter" value="#{bundle.ListVehicleOfInterestTitle_model}"/>
-                                </f:facet>
-                                <center>
-                                    <h:outputText value="#{item.model}"/>
-                                </center>
-                            </h:column>   
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText class="quickCenter" value="Year"/>
-                                </f:facet>
-                                <center>
-                                    <h:outputText value="#{item.vehYear}"/>
-                                </center>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText class="quickCenter" value="#{bundle.ListVehicleOfInterestTitle_color}"/>
-                                </f:facet>
-                                <center>
-                                    <h:outputText value="#{item.color}"/>
-                                </center>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText  value="Owners Name"/>
-                                </f:facet>
-                                <h:outputText value="#{item.ownersName}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText class="quickCenter" value="Owners Phone"/>
-                                </f:facet>
-                                <h:outputText class="quickCenter" value="#{item.ownersPhone}"/>
-                            </h:column>
-                            <f:facet name="header" class="srch">
-                                <tr>
-                                    <th><button>clear</button></th>
-                                    <th><input id="myInput" type="text" placeholder="Search License Plate" /></th>
-                                    <th><input type="text" placeholder="Search Alert Type" /></th>
-                                    <th><input type="text" placeholder="Search Make" /></th>
-                                    <th><input type="text" placeholder="Search Model" /></th>
-                                    <th><input type="text" placeholder="Search Year" /></th>
-                                    <th><input type="text" placeholder="Search Color" /></th>
-                                    <th><input type="text" placeholder="Search Owners Name" /></th>
-                                    <th><input type="text" placeholder="Search Owners Phone" /></th>
-                                </tr>
-                            </f:facet>
-                        </h:dataTable>
-                        <h:outputText escape="false" value="#{bundle.ListVehicleOfInterestEmpty}" rendered="#{vehicleOfInterestController.items.rowCount == 0}"/>
-                        <h:commandLink action="#{vehicleOfInterestController.previous}" value="#{bundle.Previous} #{vehicleOfInterestController.pagination.pageSize}" rendered="#{vehicleOfInterestController.pagination.hasPreviousPage}"/>&nbsp;
-                        <h:commandLink action="#{vehicleOfInterestController.next}" value="#{bundle.Next} #{vehicleOfInterestController.pagination.pageSize}" rendered="#{vehicleOfInterestController.pagination.hasNextPage}"/>&nbsp;
-                    </h:panelGroup>
+                        <!--                            <f:facet name="header" class="srch">
+                                                        <tr>
+                                                            <th><button>clear</button></th>
+                                                            <th><input id="myInput" type="text" placeholder="Search License Plate" /></th>
+                                                            <th><input type="text" placeholder="Search Alert Type" /></th>
+                                                            <th><input type="text" placeholder="Search Make" /></th>
+                                                            <th><input type="text" placeholder="Search Model" /></th>
+                                                            <th><input type="text" placeholder="Search Year" /></th>
+                                                            <th><input type="text" placeholder="Search Color" /></th>
+                                                            <th><input type="text" placeholder="Search Owners Name" /></th>
+                                                            <th><input type="text" placeholder="Search Owners Phone" /></th>
+                                                        </tr>
+                                                    </f:facet>-->
+                    </p:dataTable>
+                    <h:outputText escape="false" value="#{bundle.ListVehicleOfInterestEmpty}" rendered="#{vehicleOfInterestController.items.rowCount == 0}"/>
+                    <h:commandLink action="#{vehicleOfInterestController.previous}" value="#{bundle.Previous} #{vehicleOfInterestController.pagination.pageSize}" rendered="#{vehicleOfInterestController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{vehicleOfInterestController.next}" value="#{bundle.Next} #{vehicleOfInterestController.pagination.pageSize}" rendered="#{vehicleOfInterestController.pagination.hasNextPage}"/>&nbsp;
                     <br />
                 </h:form>
             </center>
