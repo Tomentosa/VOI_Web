@@ -29,71 +29,48 @@
             <center>
                 <h:form styleClass="jsfcrud_list_form">
                     <p class="description"><em>Maryland VOI Database</em></p>
-                    <p:dataTable  id="voiTable" 
-                                  class="VOI" 
-                                  value="#{vehicleOfInterestController.items}" 
-                                  var="item" 
-                                  style="border:solid 1px"
-                                  paginator="true" rows="10"
-                                  paginatorTemplate="
-                                  {PreviousPageLink} {PageLinks} {NextPageLink}
-                                  {RowsPerPageDropdown}"
-                                  rowsPerPageTemplate="5,10,15">
-                        <f:facet name="header">
-                            <div class="p-d-flex p-ai-center p-jc-between">
-                                <div>
-                                    <p:inputText id="globalFilter" onkeyup="PF('customersTable').filter()" style="width:10rem" placeholder="Enter keyword" />
-                                    <p:commandButton value="Global Filter Only" update="@form" action="#{dtFilterView.toggleGlobalFilter()}"/>
-                                </div>
-                            </div>
+                    <div class="tableContainer"> 
+                        <p:dataTable  id="voiTable" 
+                                      class="VOI" 
+                                      value="#{vehicleOfInterestController.items}" 
+                                      var="item" 
+                                      style="border:solid 1px">
+                            <p:column headerText = "&nbsp;">
+                                <center>
+                                    [<h:commandLink action = "#{vehicleOfInterestController.prepareView}" value="View"/>]
+                                </center>
+                            </p:column>
+                            <p:column headerText = "License Plate" filterBy="#{item.licensePlate}">
+                                <h:outputText class="quickCenter" value="#{item.licensePlate}"/>
+                            </p:column>
+                            <p:column headerText = "Alert Type" filterBy="#{item.reason}">
+                                <h:outputText class="quickCenter" value="#{item.reason}"/>
+                            </p:column>
+                            <p:column headerText = "Make" filterBy="#{item.make}">
+                                <h:outputText class="quickCenter" value="#{item.make}"/>
+                            </p:column>
+                            <p:column headerText = "Model" filterBy="#{item.model}">
+                                <h:outputText class="quickCenter" value="#{item.model}"/>
+                            </p:column>   
+                            <p:column headerText = "Year" filterBy="#{item.vehYear}">
+                                <h:outputText class="quickCenter" value="#{item.vehYear}"/>
+                            </p:column>
+                            <p:column headerText = "Color" filterBy="#{item.color}">
+                                <h:outputText class="quickCenter" value="#{item.color}"/>
+                            </p:column>
+                            <p:column headerText = "Owners Name" filterBy="#{item.ownersName}">
+                                <h:outputText value="#{item.ownersName}"/>
+                            </p:column>
+                            <p:column headerText = "Owners Phone #" filterBy="#{item.ownersPhone}">
+                                <h:outputText class="quickCenter" value="#{item.ownersPhone}"/>
+                            </p:column>
+                            <f:facet name="footer">
+                                <h:commandLink action="#{vehicleOfInterestController.previous}" value="#{bundle.Previous} #{vehicleOfInterestController.pagination.pageSize}" rendered="#{vehicleOfInterestController.pagination.hasPreviousPage}"/>&nbsp;
+                                <h:commandLink action="#{vehicleOfInterestController.next}" value="#{bundle.Next} #{vehicleOfInterestController.pagination.pageSize}" rendered="#{vehicleOfInterestController.pagination.hasNextPage}"/>&nbsp;
+                            </f:facet>
+                        </p:dataTable>
+                    </div> 
 
-                        </f:facet>
-                        <p:column headerText = "&nbsp;">
-                            [<h:commandLink action = "#{vehicleOfInterestController.prepareView}" value="View"/>]
-                        </p:column>
-                        <p:column headerText = "License Plate">
-                            <h:outputText value="#{item.licensePlate}"/>
-                        </p:column>
-                        <p:column headerText = "Alert Type">
-                            <h:outputText value="#{item.reason}"/>
-                        </p:column>
-                        <p:column headerText = "Make">
-                            <h:outputText value="#{item.make}"/>
-                        </p:column>
-                        <p:column headerText = "Model">
-                            <h:outputText value="#{item.model}"/>
-                        </p:column>   
-                        <p:column headerText = "Year">
-                            <h:outputText value="#{item.vehYear}"/>
-                        </p:column>
-                        <p:column headerText = "Color">
-                            <h:outputText value="#{item.color}"/>
-                        </p:column>
-                        <p:column headerText = "Owners Name">
-                            <h:outputText value="#{item.ownersName}"/>
-                        </p:column>
-                        <p:column headerText = "Owners Phone #">
-                            <h:outputText class="quickCenter" value="#{item.ownersPhone}"/>
-                        </p:column>
-
-                        <!--                            <f:facet name="header" class="srch">
-                                                        <tr>
-                                                            <th><button>clear</button></th>
-                                                            <th><input id="myInput" type="text" placeholder="Search License Plate" /></th>
-                                                            <th><input type="text" placeholder="Search Alert Type" /></th>
-                                                            <th><input type="text" placeholder="Search Make" /></th>
-                                                            <th><input type="text" placeholder="Search Model" /></th>
-                                                            <th><input type="text" placeholder="Search Year" /></th>
-                                                            <th><input type="text" placeholder="Search Color" /></th>
-                                                            <th><input type="text" placeholder="Search Owners Name" /></th>
-                                                            <th><input type="text" placeholder="Search Owners Phone" /></th>
-                                                        </tr>
-                                                    </f:facet>-->
-                    </p:dataTable>
-                    <h:outputText escape="false" value="#{bundle.ListVehicleOfInterestEmpty}" rendered="#{vehicleOfInterestController.items.rowCount == 0}"/>
-                    <h:commandLink action="#{vehicleOfInterestController.previous}" value="#{bundle.Previous} #{vehicleOfInterestController.pagination.pageSize}" rendered="#{vehicleOfInterestController.pagination.hasPreviousPage}"/>&nbsp;
-                    <h:commandLink action="#{vehicleOfInterestController.next}" value="#{bundle.Next} #{vehicleOfInterestController.pagination.pageSize}" rendered="#{vehicleOfInterestController.pagination.hasNextPage}"/>&nbsp;
-                    <br />
                 </h:form>
             </center>
             <div class="bottomBanner">

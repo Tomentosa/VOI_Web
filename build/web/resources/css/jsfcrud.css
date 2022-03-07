@@ -123,6 +123,11 @@ form.jsfcrud_list_form th, td th {
 
 }
 
+.searchField{
+    padding: 30px 3;
+    padding-left: 75%;
+}
+
 .search{
     margin-top: 5px;
     font-family: Arial, Helvetica, sans-serif;
@@ -132,6 +137,10 @@ form.jsfcrud_list_form th, td th {
 
 .space {
     margin-top: 65px;
+}
+
+tableContainer{
+    padding: 5px 1px;
 }
 
 .topBanner{
@@ -191,4 +200,8 @@ tr.jsfcrud_odd_row {
 tr.jsfcrud_even_row {
     background-color: #eff5fa;
     color: #4e6a71;
+}
+
+VOI{
+    padding:5px 2px;
 }
